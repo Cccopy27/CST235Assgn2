@@ -60,6 +60,10 @@
                 //save username to session
                 $_SESSION['userID'] = $ID['ID'];
 
+                // log
+                $sql = "INSERT INTO userLog(user,login_status) VALUES('$user','S')";
+                mysqli_query($conn, $sql);
+
                 // close connection
                 mysqli_close($conn);
 
@@ -69,6 +73,12 @@
             }
             else{
 			    $errors['username'] = 'Wrong username or password';
+                $sql = "INSERT INTO userLog(user,login_status) VALUES('$user','D')";
+                mysqli_query($conn, $sql);
+
+                // close connection
+                mysqli_close($conn);
+
                 //exit();
             }
         }
