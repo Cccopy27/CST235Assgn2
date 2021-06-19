@@ -1,0 +1,298 @@
+ body,html{
+    height: 100%;
+    margin: 0;
+} 
+
+body{
+    background: url(../img/bridge.jpg);
+    backdrop-filter: blur(2px);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+header{
+    background-color:#557A95 ;  
+    text-align: center; 
+    width: 100%;
+    padding: 5px 0; 
+    top: 0;
+    left: 0;
+
+}
+
+header nav a.notes{
+    text-align: center; 
+    font-weight: bold;
+    font-size: 40px;
+    text-decoration: none;
+    color: black;
+}
+
+div.write{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin: 30px auto;
+}
+
+input[type=text],textarea{
+    width: 500px;
+    height:50px;
+    overflow: auto;
+    resize: none;
+    background:rgba(255, 255, 255, 0.8);  
+    padding: 10px 10px;
+    border: 0 none;
+    transition: all 0.3s ease;
+} 
+
+input[type=text]{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+ input[type=text]:focus{
+     border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;  
+}
+ 
+textarea{
+    vertical-align: top;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+ textarea:focus{ 
+    height: 200px;
+      box-shadow: 0 0 0 4px rgba(21, 156, 228, 0.685);
+      border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+ 
+}
+
+textarea:focus,input[type=text]:focus{
+    position: relative;
+    color: black;
+    background-color: white;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(21,156,228,0.4);
+}
+
+button.save_note{
+    right: 20%;
+    top: -20px;
+    position: absolute;
+    border: none;
+    font-size: 1em;
+    margin: 40px auto;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+button.save_note:hover,button.delete_note:hover{
+    color: white;
+    background-color: rgba(21, 156, 228, 0.685);
+    border-color:rgba(21, 156, 228, 0.685);
+}
+
+button.save_note:active,button.delete_note:active{
+    color: white;
+    background-color: darkblue;
+    border-color: darkblue;
+}
+
+button.save_note:focus,button.delete_note:focus {
+    outline: none;
+    box-shadow: 0 0 0 5px rgba(21, 156, 228, 0.4);
+}
+
+.container {
+    padding: 1em; 
+    margin: 3em;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 30%);
+    grid-column-gap: 4em;
+    grid-row-gap: 2em;
+}
+
+.grid_item {
+    border-radius: 5px;
+    height: 100px;
+    transition: all 0.3s ease;
+    background-color:#fff;
+    border: none;
+    box-shadow: 10px 10px 10px rgba(33,33,33,.7);
+    position: relative;
+    padding: 5px 20px 30px 20px;  
+}
+ 
+.grid_item:hover{
+    box-shadow: 19px 19px 19px rgba(0,0,0,.7);
+    z-index: 1;
+    transform: scale(1.25);
+    height: auto; 
+}  
+
+.grid_item:hover h3,.grid_item:hover p{ 
+    overflow: visible;
+    z-index: 1;
+    white-space: unset;  
+}
+
+div h3,div p{
+    white-space: nowrap; 
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+div h3{
+    font-size: 1.4em;
+    font-weight: bold;
+    padding-top: 10px; 
+    margin: 0;
+}
+
+div p{
+    margin: 0;
+}
+
+button.delete_note{
+    margin: 40px auto;
+    padding: 10px 20px;
+    border:none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: absolute; 
+    bottom: -40px;
+    font-size: 0.8em;
+    left: 50%;
+    transform: translate(-50%, -10%); 
+}
+
+footer{
+    font-size: 1.5em;
+    text-align: center;
+}
+
+@media screen and (max-width: 480px){
+    form{
+        height: 200px;
+    }
+    input[type=text],textarea{
+        width: 300px;
+    }
+
+    button.save_note{
+        position: relative;
+        right: 0;
+    }
+
+    .container {
+        margin: 1em;
+        grid-template-columns: 350px;
+    }
+
+    .grid_item:hover{    
+        transform:none; 
+    }  
+}
+
+@media screen and (max-width: 560px) and (min-width: 479px){
+    form{
+        height: 200px;
+    }
+    input[type=text],textarea{
+        width: 400px;
+    }
+
+    button.save_note{
+        position: relative;
+        right: 0;
+    }
+
+    .container {
+        margin: 1em;
+        grid-template-columns: repeat(2, 42%);
+    }
+
+    .grid_item:hover{
+        transform:scae(1.1); 
+    }  
+}
+
+@media screen and (max-width: 640px) and (min-width:561px){
+    form{
+        height: 200px;
+    }
+    input[type=text],textarea{
+        width: 480px;
+    }
+
+    button.save_note{
+        position: relative;
+        right: 0;
+    }
+
+    .container {
+        padding: 1.5em;
+        margin: 1em;
+        grid-template-columns: repeat(2,43%);
+    }
+
+    .grid_item:hover{
+        transform:scae(1.1); 
+    }  
+
+    textarea:focus{ 
+        height: 200px;
+     
+    }
+}
+
+@media screen and (max-width: 960px) and (min-width:641px){
+    form{
+        height: 200px;
+    }
+    input[type=text],textarea{
+        width: 480px;
+    }
+
+    button.save_note{
+        position: relative;
+        right: 0;
+    }
+
+    .container {
+        padding: 2em;
+        margin: 1em;
+        grid-template-columns: repeat(2,45%);
+    }
+
+    .grid_item:hover{
+        transform:scae(1.1); 
+    }  
+}
+
+@media screen and (max-width: 1280px) and (min-width:961px){
+    button.save_note{
+        right: 10%;
+    }
+
+    .grid_item:hover{
+        transform: scale(1.1); 
+    } 
+}
+
+@media screen and (min-width: 1281px) {
+    button.save_note{
+        right: 20%;
+    }
+}
+
