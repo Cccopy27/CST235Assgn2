@@ -92,7 +92,7 @@
 
 	<?php include("templates/header.php"); ?>
 
-	<form class="logout" action="/logout.php" method="POST">
+	<form class="logout" action="./logout.php" method="POST">
 		<input type="submit" value="Logout">	
 	</form>
 

@@ -10,7 +10,7 @@
         echo 'Connection error: ' . mysqli_connect_error();		// error if there is an error in connection
     }
 
-	$user = $pass = '';
+	$user = '';
 	$errors = array('username' => '', 'password' => '', 'incorrect' => '');
 
 
@@ -103,7 +103,7 @@
                 <?php echo $errors['username']; ?>
             </div>
 			<div class="form-input">
-				<input type="password" name="password" placeholder="Enter your password" value="<?php echo htmlspecialchars($pass) ?>"/>
+				<input type="password" name="password" placeholder="Enter your password">
 			</div>
             <div class="red-text">
                 <?php echo $errors['password']; ?>
