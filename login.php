@@ -32,7 +32,7 @@
         else{
             // safety
 			$user = mysqli_real_escape_string($conn, $_POST['username']);
-			$pass = mysqli_real_escape_string($conn, SHA1($_POST['password']));
+			$pass = mysqli_real_escape_string($conn, hash('sha512', $_POST['password']));
 
             // testing 
             //$user = $_POST['username'];
