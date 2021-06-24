@@ -2,6 +2,9 @@
 
 <?php
     session_start();
+
+    $status = '';
+
     //check login attempts
     
     if(isset($_SESSION['locked'])){
@@ -17,7 +20,6 @@
     }
 
     
-
     //connect to databse
 	$conn = mysqli_connect('localhost', 'kuro7799', 'wenhao0627', 'noteboard');
 
@@ -27,9 +29,9 @@
     }
 
 	$user = '';
-	$errors = array('username' => '', 'password' => '', 'incorrect' => '');
+	$errors = array('username' => '', 'password' => '', 'captcha' => '', 'incorrect' => '');
 
-
+    
     // if form is submitted
     if(isset($_POST['submit'])){
 
@@ -42,6 +44,18 @@
 		if(empty($_POST['password'])){
 			$errors['password'] = 'Password cannot be empty';
 		}
+
+		// check captcha_code
+        if(empty($_POST['captcha'])){
+            $errors['captcha'] = 'Captcha Code cannot be empty';
+        }
+
+        if (isset($_POST['captcha']) && ($_POST['captcha']!="") ){
+             if(strcasecmp($_SESSION['captcha'], $_POST['captcha']) != 0){
+                $errors['captcha'] = 'Captcha Code does not match';
+	        }
+        }
+        echo $status;
 
         if(array_filter($errors)){
         }
@@ -121,6 +135,13 @@
 			</div>
             <div class="red-text">
                 <?php echo $errors['password']; ?>
+            </div>
+            <div class="form-input">
+                <input type="text" name="captcha" placeholder="Enter the code" id="c">
+                <img src="image.php" align="right">
+            </div>
+            <div class="red-text">
+                <?php echo $errors['captcha']; ?>
             </div>
             <?php 
                 // login fail > 3
