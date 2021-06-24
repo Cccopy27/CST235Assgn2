@@ -66,10 +66,15 @@
 
             // testing 
             //$user = $_POST['username'];
+            //echo $user;
+            //echo htmlspecialchars($user);
             //$pass = $_POST['password'];
+
 
             //sql query
             $sql = "SELECT * FROM loginform WHERE user = '".$user."' AND pass = '".$pass."' limit 1";
+
+            //$sql = "SELECT * FROM loginform WHERE user = ".$user." AND pass = ".$pass." limit 1";
 
             // make query and get result
             $result = mysqli_query($conn, $sql);
@@ -79,6 +84,9 @@
 
                 // sql query to get user id
                 $sql = "SELECT ID FROM loginform WHERE user = '".$user."' AND pass = '".$pass."'";
+
+                // $sql = "SELECT ID FROM loginform WHERE user = ".$user." AND pass = ".$pass."";
+
                 $result = mysqli_query($conn, $sql);
 
                 // fetch the resulting id
@@ -146,18 +154,18 @@
             <?php 
                 // login fail > 3
                 if (isset($_SESSION['login_attempts']) && $_SESSION['login_attempts'] > 2){
-                    echo '<p style="color:white;font-size:18px;">You have exceeded the maximum login attempts!</p>' ;
-                    echo '<p style="color:white;font-size:18px; display:inline">Please try again after </p>';
+                    echo '<p style="color:red;font-size:18px;">You have exceeded the maximum login attempts!</p>' ;
+                    echo '<p style="color:red;font-size:18px; display:inline">Please try again after </p>';
                     
                     // get time when fail login for one time only
                     if(!isset($_SESSION['locked'])){
                         $_SESSION['locked'] = time();
-                        echo '<p style="color:white;font-size:18px;display:inline">30 seconds</p>';
+                        echo '<p style="color:red;font-size:18px;display:inline">30 seconds</p>';
 
                     // countdown time for 30s
                     }else{
                         $timeleft = 30 - $_SESSION['diff'];
-                        echo '<p style="color:white;font-size:18px;display:inline">'.$timeleft .' seconds</p>';
+                        echo '<p style="color:red;font-size:18px;display:inline">'.$timeleft .' seconds</p>';
                     }
                 // login fail <= 3
                 }else{ 
